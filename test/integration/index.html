@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>integration</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+    li {
+      margin: 10px 0;
+    }
+    h2 {
+      margin: 20px 0 10px 0;
+    }
+    a {
+      text-decoration: none;
+    }
+    img { 
+      max-width: 320px; 
+      height: auto; 
+      border: 1px solid #ccc; 
+      padding: 5px; 
+      background-color: #fff;
+      vertical-align: top;
+    }
+  </style>
+</head>
+
+<body>
+  <ul id="ul"></ul>
+  <script>
+    fetch('config.json')
+      .then(resp => resp.json())
+      .then(config => {
+        for (const name of config.elements) {
+          const li = document.createElement('li')
+          li.innerHTML = `<h2><a href="${name}.html">${name}</a></h2>
+          ${Object.keys(config.viewports).map(key => {
+            const viewport = config.viewports[key]
+            return `
+            <a href="${name}.html">
+              <img src="screenshots/baseline/${key}/${name}.png" width="${viewport.width / 2}" height="${viewport.height / 2}">
+            </a>`
+          }).join('')}`
+          ul.appendChild(li)
+        }
+      })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+{
+    "elements": [
+      "page-numbers"
+    ],
+    "puppeteer": {
+      "headless": true,
+      "args": [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--hide-scrollbars"
+      ]
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1920,
+        "height": 1080
+      },
+      "tablet": {
+        "width": 1024,
+        "height": 768
+      },
+      "phone": {
+        "width": 375,
+        "height": 667
+      }
+    }
+  }
+  

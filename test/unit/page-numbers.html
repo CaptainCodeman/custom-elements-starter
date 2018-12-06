@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>page-numbers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="wct-setup.js"></script>
+    <script src="/node_modules/wct-mocha/wct-mocha.js"></script> 
+  </head>
+  <body>
+    <test-fixture id="basic">
+      <template>
+        <page-numbers></page-numbers>
+      </template>
+    </test-fixture>
+
+    <script type="module">
+      import { PageNumbersElement } from '/dist/index.js'
+
+      suite('page-numbers tests', function() {
+        let el;
+        setup(function() {
+          el = fixture('basic');
+          return el.updateComplete;
+        });
+        test('is instance', () => {
+          chai.assert.instanceOf(el, PageNumbersElement);
+        });
+
+        test('links should not render without inputs', () => {
+          const links = el.shadowRoot.querySelectorAll('a')
+          chai.assert.equal(links.length, 0, 'expect 0 links')
+        })
+
+        test('links should render with inputs', async () => {
+          el.count = 100
+          await el.updateComplete
+          const links = el.shadowRoot.querySelectorAll('a')
+          chai.assert.equal(links.length, 7, 'expect 7 links')
+          console.log(JSON.stringify(el.links))
+        })
+
+        test('current page should be active')
+        test('prev should be disabled on first page')
+        test('prev should be enabled on non-first pages')
+        test('next should be disabled on last page')
+        test('next should be enabled on non-last pages')
+        test('ellipsis should show page split')
+        test('page delta links should be shown')
+
+        /*
+        [
+          {"page":0,"content":{"strings":["<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\"/><path d=\"M0 0h24v24H0z\" fill=\"none\"/></svg>"],"values":[],"type":"svg","processor":{}},"class":"prev","active":false,"disabled":true},
+          {"page":1,"content":"1","class":"page","active":true,"disabled":false},
+          {"page":2,"content":"2","class":"page","active":false,"disabled":false},
+          {"page":3,"content":"3","class":"page","active":false,"disabled":false},
+          {"page":6,"class":"div","active":false,"disabled":false},
+          {"page":10,"content":"10","class":"page","active":false,"disabled":false},
+          {"page":2,"content":{"strings":["<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"/><path d=\"M0 0h24v24H0z\" fill=\"none\"/></svg>"],"values":[],"type":"svg","processor":{}},"class":"next","active":false,"disabled":false}
+        ]
+        */
+      });
+    </script>
+  </body>
+</html>

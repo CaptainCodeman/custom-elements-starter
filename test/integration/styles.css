@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto');
+
+:root {
+  --button-color: #fff;
+  --button-background-color: #1a1ea2;
+}
+
+html {
+  background-color: #f0f0f0;
+}
+
+body {
+  max-width: 960px;
+  margin: 15px auto;
+  padding: 5px;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
+}

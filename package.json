@@ -1,0 +1,52 @@
+{
+  "name": "@captaincodeman/custom-elements-starter",
+  "version": "1.0.0-beta.0",
+  "description": "Custom Elements Starter",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node server.js",
+    "test": "npm run build && npm run test:unit && npm run test:integration",
+    "test:unit": "wct --npm",
+    "test:integration": "mocha test/integration --timeout=10000",
+    "test:regenerate": "npm run build && node test/integration/screenshots/baseline/regenerate.js",
+    "mypublish": "npm run test && cp readme.md package.json dist && npm publish dist --tag beta --access=public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/captaincodeman/custom-elements-starter"
+  },
+  "author": "simon@captaincodeman.com",
+  "license": "ISC",
+  "dependencies": {
+    "@material/mwc-icon": "^0.3.2",
+    "@polymer/lit-element": "^0.6.3",
+    "@webcomponents/webcomponentsjs": "^2.2.1",
+    "lit-html": "^0.13.0"
+  },
+  "devDependencies": {
+    "@polymer/test-fixture": "^4.0.2",
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.5",
+    "@types/puppeteer": "^1.11.1",
+    "@types/sinon": "^5.0.7",
+    "browser-sync": "^2.26.3",
+    "chai": "^4.2.0",
+    "compression": "^1.7.3",
+    "express": "^4.16.4",
+    "express-cache-headers": "^0.1.4",
+    "express-transform-bare-module-specifiers": "^1.0.2",
+    "mocha": "^5.2.0",
+    "pixelmatch": "^4.0.2",
+    "pngjs": "^3.3.3",
+    "puppeteer": "^1.11.0",
+    "serve-static": "^1.13.2",
+    "sinon": "^7.1.1",
+    "tslib": "^1.9.3",
+    "typescript": "^3.2.1",
+    "wct-mocha": "^1.0.0",
+    "web-component-tester": "^6.9.0"
+  }
+}

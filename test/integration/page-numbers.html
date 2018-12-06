@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>page-numbers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+  <script src="/dist/index.js" type="module"></script>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    page-numbers {
+      font-size: 16px;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <p>Plain element</p>
+  <page-numbers></page-numbers>
+  
+  <p>Page 7, 200 items, page size 20</p>
+  <page-numbers page="7" size="20", count="200"></page-numbers>
+
+  <p>Page 995, 10000 items, page size 10</p>
+  <page-numbers page="995" size="10", count="10000"></page-numbers>
+  
+  <p>Pages 1 to 20, 200 items, page size 10</p>
+  <script>
+    for (let page = 1; page <= 20; page++) {
+      const el = document.createElement('page-numbers')
+      el.page = page
+      el.size = 10
+      el.count = 200
+      document.body.appendChild(el)
+    }
+  </script>
+</body>
+
+</html>
