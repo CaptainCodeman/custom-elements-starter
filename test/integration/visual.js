@@ -10,6 +10,11 @@ const port = 4444
 const currentDir = `${process.cwd()}/test/integration/screenshots/current`;
 const baselineDir = `${process.cwd()}/test/integration/screenshots/baseline`;
 
+// Create the test directory if needed.
+if (!fs.existsSync(currentDir)) {
+  fs.mkdirSync(currentDir);
+}
+
 describe('page screenshots are correct', function () {
   let server, browser, page;
 
@@ -23,11 +28,6 @@ describe('page screenshots are correct', function () {
     app.use(serveStatic('.'))
 
     server = app.listen(port)
-
-    // Create the test directory if needed.
-    if (!fs.existsSync(currentDir)) {
-      fs.mkdirSync(currentDir);
-    }
   });
 
   after((done) => server.close(done));
