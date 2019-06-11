@@ -1,7 +1,6 @@
-import { html } from "lit-html"
+import { css } from "lit-element"
 
-export const sharedStyles = html`
-<style>
+export const sharedStyles = css`
   :host {
     display: block;
     box-sizing: border-box;
@@ -14,4 +13,4 @@ export const sharedStyles = html`
   :host([hidden]), [hidden] { 
     display: none !important;
   }
-</style>`
+`

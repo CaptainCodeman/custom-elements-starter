@@ -1,4 +1,4 @@
-import { LitElement, html, property, customElement, PropertyValues } from '@polymer/lit-element';
+import { LitElement, html, property, customElement, PropertyValues } from 'lit-element';
 import { SVGTemplateResult } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { sharedStyles } from './shared-styles';
@@ -126,7 +126,6 @@ export class PageNumbersElement extends LitElement {
     this.links = this.createPageLinks(this.page, pages, this.delta)
     
     return html`
-${sharedStyles}
 <style>
   :host {
     display: flex;
@@ -177,5 +176,11 @@ ${this.links.map(link => html`${link.disabled
   ? html`<a class="${link.class}" disabled>${link.content}</a>`
   : html`<a class="${link.class}" href="?page=${link.page}" ?active="${link.active}">${link.content}</a>`}`)}
 `
+  }
+
+  static get styles() {
+    return [
+      sharedStyles
+    ]
   }
 }
