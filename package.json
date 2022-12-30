@@ -40,7 +40,7 @@
     "express-cache-headers": "^0.1.4",
     "express-transform-bare-module-specifiers": "^1.0.2",
     "lodash": ">=4.17.15",
-    "mocha": "^6.2.2",
+    "mocha": "^10.2.0",
     "pixelmatch": "^5.1.0",
     "pngjs": "^3.4.0",
     "puppeteer": "^2.0.0",
